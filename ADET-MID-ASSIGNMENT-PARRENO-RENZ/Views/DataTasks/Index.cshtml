@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Assignment.Models.DataTask>
+
+@{
+    ViewData["Title"] = "To Do List";
+}
+
+<h2>To Do List</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name) Discription
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.What_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Start_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finish_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Of_Hours)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.What_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finish_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_Of_Hours)
+            </td>
+            <td>
+                    <a class="btn btn-small btn-outline-success" asp-action="Edit" asp-route-id="@item.ID">Edit</a> 
+                    <a class="btn btn-small btn-outline-secondary" asp-action="Details" asp-route-id="@item.ID">Details</a>
+                    <a class="btn btn-small btn-danger" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
